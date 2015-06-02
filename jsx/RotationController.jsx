@@ -66,7 +66,7 @@ var RotationController = React.createClass({
       this.setState({
         base: newBase
       }, 
-      function() { p.onStop(newBase); }
+      function() { p.onStop(this.state.angle); }
       );
     } else {
       this.setState({
