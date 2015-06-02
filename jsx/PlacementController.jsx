@@ -23,7 +23,7 @@ var PlacementController = React.createClass({
       var y = this.state.y + this.state.yDiff;
       this.props.onChange(x, y);
     }
-  }
+  },
 
   handleTransformEnd: function() {
     if (this.props.onStop) {
