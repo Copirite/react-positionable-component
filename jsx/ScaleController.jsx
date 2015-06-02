@@ -53,10 +53,22 @@ var ScaleController = React.createClass({
   },
 
   handleTransformEnd: function() {
-    this.setState({
-      base: this.state.base * this.state.scale,
-      scale: 1
-    });
+    var p = this.props;
+    var newBase = this.state.base * this.state.scale;
+    
+    if (p.onStop) {
+      this.setState({
+        base: newBase,
+        scale: 1
+      },
+      function() { p.onStop(newBase); }
+                   );
+    } else {
+      this.setState({
+        base: newBase,
+        scale: 1
+      })
+    }
   }
 });
 
