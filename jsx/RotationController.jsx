@@ -59,9 +59,20 @@ var RotationController = React.createClass({
   },
 
   handleTransformEnd: function() {
-    this.setState({
-      base: this.state.base + this.state.angle
-    });
+    var p = this.props;
+    var newBase = this.state.base * this.state.angle;
+
+    if (p.onStop) {
+      this.setState({
+        base: newBase
+      }, 
+      function() { p.onStop(newBase); }
+      );
+    } else {
+      this.setState({
+        base: newBase
+      });
+    }
   }
 });
 
